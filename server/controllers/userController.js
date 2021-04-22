@@ -104,6 +104,19 @@ userController.verifyUser = (req, res, next) => {
   });
 };
 
+userController.updateUser = (req, res, next) => {
+  const {username} = req.body;
+
+  console.log('UPDATEUSER FIRED');
+
+  bcrypt
+    .hash(req.body.password, 10)
+    .then((hash) => {
+      User.findOneAndUpdate({username}, {$set: {password: hash}}).then(next());
+    })
+    .catch(() => res.send(400));
+};
+
 // console.log('LOGIN FIRED: ', req.body.username, req.body.password);
 // // findOne instance of username and password in db
 // User.findOne({username: req.body.username, password: req.body.password})
@@ -125,8 +138,8 @@ userController.verifyUser = (req, res, next) => {
 
 userController.deleteUser = (req, res, next) => {
   // delete one user with the username in req.body.username
-
-  User.findOneAndRemove({username: req.body.username}).then(next());
+  const {username} = req.body;
+  User.findOneAndRemove({username}).then(next()).catch(res.send(400));
 };
 
 module.exports = userController;

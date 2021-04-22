@@ -71,6 +71,10 @@ app.get('/delete', (req, res) => {
   res.render('./../client/delete', {error: null});
 });
 
+app.get('/update', (req, res) => {
+  res.render('./../client/update', {error: null});
+});
+
 app.post(
   '/signup',
   userController.createUser,
@@ -86,6 +90,11 @@ app.post(
 
 app.post('/delete', userController.deleteUser, (req, res) => {
   console.log('DELETED FIRED');
+  res.redirect('/secret');
+});
+
+app.post('/update', userController.updateUser, (req, res) => {
+  console.log('UPDATE FIRED');
   res.redirect('/secret');
 });
 
