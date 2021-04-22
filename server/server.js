@@ -20,7 +20,7 @@ app.use(express.json());
 //     ? 'mongodb://localhost/unit11test'
 //     : 'mongodb://localhost/unit11dev';
 
-const mongoURI = 'mongodb://localhost/3801';
+const mongoURI = 'mongodb://localhost/3802';
 mongoose.connect(mongoURI);
 
 /**
@@ -109,7 +109,7 @@ app.get('/secret', userController.getAllUsers, (req, res) => {
  * 404 handler
  */
 app.use('*', (req, res) => {
-  res.status(404).send('Not Found');
+  res.status(404).send('You done fucked up');
 });
 
 /**
