@@ -2,17 +2,26 @@
 <head>
   <meta charset="UTF-8">
   <title>Unit-10-Authentication</title>
+  <link href= "/public/assets/styles.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-  Signup
-  <form method='POST' action='/signup'>
-    <input name="username" type="text" placeholder="username"></input>
-    <input name="password" type="password"></input>
-    <input type='submit' value='Create User'></button>
-    <% if (error) { %>
-      <div>  Error </div>
-      <div> <%= error %> </div>
-    <% } %>
-  </form>
+  <div id="signup_space">
+  </div>
+<div class="signup_container">
+  <div class="signup">
+
+    Sign Up
+    <br>
+    <br>
+    <form method='POST' action='/signup'>
+      <input name="username" type="text" placeholder="username"></input> <br><br>
+      <input name="password" type="password" placeholder="password"></input>
+      <br><br>
+      <input type='submit' value='Create User'></button>
+  
+      </form>
+      
+    </div>
+  </div>
 </body>
 </html>

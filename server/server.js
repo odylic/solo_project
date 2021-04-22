@@ -15,6 +15,9 @@ const app = express();
 // Bodyparser
 app.use(express.json());
 
+// express.static assets, css, images
+app.use('/public', express.static('public'));
+
 // const mongoURI =
 //   process.env.NODE_ENV === 'test'
 //     ? 'mongodb://localhost/unit11test'
