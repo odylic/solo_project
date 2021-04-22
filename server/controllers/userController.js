@@ -87,7 +87,11 @@ userController.verifyUser = (req, res, next) => {
       .compare(password, user.password)
       .then((result) => {
         // password did not match
-        if (!result) console.log('wrong password');
+        if (!result) {
+          console.log('Wrong password');
+
+          return;
+        }
         // password match, save user for following middleware
         res.locals.user = user;
         return next();
@@ -118,5 +122,11 @@ userController.verifyUser = (req, res, next) => {
 //   .catch((err) => res.render('./../client/signup', {error: err}));
 
 // end of UserController.verifyUser
+
+userController.deleteUser = (req, res, next) => {
+  // delete one user with the username in req.body.username
+
+  User.findOneAndRemove({username: req.body.username}).then(next());
+};
 
 module.exports = userController;

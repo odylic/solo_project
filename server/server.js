@@ -23,7 +23,7 @@ app.use('/public', express.static('public'));
 //     ? 'mongodb://localhost/unit11test'
 //     : 'mongodb://localhost/unit11dev';
 
-const mongoURI = 'mongodb://localhost/3802';
+const mongoURI = 'mongodb://localhost/3800';
 mongoose.connect(mongoURI);
 
 /**
@@ -67,6 +67,10 @@ app.get('/signup', (req, res) => {
   res.render('./../client/signup', {error: null});
 });
 
+app.get('/delete', (req, res) => {
+  res.render('./../client/delete', {error: null});
+});
+
 app.post(
   '/signup',
   userController.createUser,
@@ -80,14 +84,17 @@ app.post(
   }
 );
 
+app.post('/delete', userController.deleteUser, (req, res) => {
+  console.log('DELETED FIRED');
+  res.redirect('/secret');
+});
+
 /**
  * login
  */
 app.post(
   '/login',
   userController.verifyUser,
-  sessionController.isLoggedIn,
-  // sessionController.startSession,
   cookieController.setSSIDCookie,
   (req, res) => {
     // what should happen here on successful log in?

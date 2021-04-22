@@ -170,6 +170,10 @@ a:hover {
 
 }
 
+.music {
+  display: none;
+}
+
 @media screen and (max-width: 600px){
   .header{
     height: 300px;
@@ -179,6 +183,6 @@ a:hover {
     height: 200px; 
   }
 
-
-
 }
+
+
